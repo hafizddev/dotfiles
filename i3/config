@@ -1,0 +1,268 @@
+###### set leader
+set $mod Mod4
+
+####### set font
+font pango:Open sans 11
+
+####### SHORTCUTS #########
+floating_modifier $mod
+
+####### Kill Focused Window
+bindsym $mod+Shift+q kill
+
+###### set terminal 
+bindsym $mod+Return exec --no-startup-id xfce4-terminal
+
+####### Change Focus, container
+####### di dalam container banyak windows
+####### berpindah windows / terminal satu ke terminal satu nya
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+####### Alternatively, you Can Use the Arrow Keys
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+####### Move Focused Window
+bindsym $mod+Shift+h move left  1px
+bindsym $mod+Shift+j move down  1px
+bindsym $mod+Shift+k move up    1px
+bindsym $mod+Shift+l move right 1px
+
+####### Alternatively, You Can Use the Arrow Keys
+bindsym $mod+Shift+Left  move left  20px
+bindsym $mod+Shift+Down  move down  20px
+bindsym $mod+Shift+Up    move up    20px
+bindsym $mod+Shift+Right move right 20px
+
+####### split in horizontal orientation
+bindsym $mod+c split h
+
+####### split in vertical orientation
+bindsym $mod+v split v
+
+####### Enter Fullscreen Mode for the Focused Container
+bindsym $mod+f fullscreen toggle
+
+####### change container layout (stacked, tabbed, toggle split)
+bindsym $mod+q layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+x layout toggle split
+
+####### Toggle Tiling / Floating
+bindsym $mod+Shift+space floating toggle border none
+
+####### Change Focus Between Tiling / Floating Windows
+bindsym $mod+space focus mode_toggle
+
+####### run lockscreen
+#bindsym $mod+i exec lock
+
+####### move workspaces between monitors
+bindsym $mod+b move workspace to output right
+
+####### focus the parent container
+#bindsym $mod+a focus parent
+
+####### focus the child container
+#bindsym $mod+d focus child
+
+# run rofi programs
+bindsym $mod+a exec "rofi -show window -no-default-config -config ~/.config/rofi/main.rasi"
+bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/main.rasi"
+bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/full_screen.rasi"
+
+####### Orientation for New Workspaces
+### New workspaces get a reasonable default orientation: Wide-screen monitors
+### (anything wider than high) get horizontal orientation, rotated monitors
+### (anything higher than wide) get vertical orientation.
+### Syntax: default_orientation horizontal|vertical|auto
+default_orientation horizontal
+
+####### Layout Mode for New Containers
+### This option determines in which mode new containers on workspace level will start
+### Syntax: workspace_layout default|stacking|tabbed
+workspace_layout default
+
+####### Define Color Variables
+default_border pixel 3
+
+#set $bg-color               #B58900
+#set $text-color             #002B36
+#set $border-color           #B58900
+#set $inactive-bg-color      #264A53
+#set $inactive-text-color    #657B83
+#set $urgent-bg-color        #CB4B16
+#set $urgent-text-color      #FFFFFF
+#set $indicator              #FFAF00
+
+####### Window Colors
+# Opetion Name           # Border            # Background        # Text                # Indicator
+#client.focused           $bg-color           $bg-color           #$text-color           $indicator
+#client.unfocused         $inactive-bg-color  $inactive-bg-color  #$inactive-text-color  $indicator
+#client.focused_inactive  $inactive-bg-color  $inactive-bg-color  #$inactive-text-color  $indicator
+#client.urgent            $urgent-bg-color    $urgent-bg-color    #$urgent-text-color    $indicator
+
+####### Window Container Border Settings
+### syntax: new_window normal|none|pixel
+new_window pixel 3
+
+####### Syntax: new_float normal|none|pixel
+new_float normal 3
+
+####### For Direct Border Changing with Keyboard Shortcut
+bindsym $mod+Shift+t border normal 0
+bindsym $mod+t       border normal 1
+bindsym $mod+Shift+y border pixel  3
+bindsym $mod+y       border none
+
+####### Open the Blank Space "i3 open" or "i3-msg open"
+#bindsym $mod+o open
+# i3 move a workspace to another monitor (multi monitor setup)
+mode "move_workspace" {
+ bindsym k move workspace to output up
+ bindsym j move workspace to output down
+ bindsym h move workspace to output left
+ bindsym l move workspace to output right
+ bindsym Escape mode "default"
+}
+
+####### define monitor
+set $fm LVDS-1
+set $sm HDMI-1
+
+####### Define Workspace
+workspace 1 output $fm
+workspace 2 output $fm
+workspace 3 output $fm
+workspace 4 output $fm
+workspace 5 output $fm
+workspace 6 output $sm
+workspace 7 output $sm
+workspace 8 output $sm
+workspace 9 output $sm
+
+#Define WS Vars
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+####### Switch to Workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+#bindsym $mod+0 workspace $ws10
+
+####### Move Focused Container to Workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+####### Reload the Configuration File
+bindsym $mod+Shift+c reload
+
+####### Restart i3 Inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Resize Window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym h resize shrink width  1 px
+  bindsym j resize grow   height 1 px
+  bindsym k resize shrink height 1 px
+  bindsym l resize grow   width  1 px
+
+  # same bindings, but for the arrow keys
+  bindsym Left  resize shrink width  1 px or 1 ppt
+  bindsym Down  resize grow   height 1 px or 1 ppt
+  bindsym Up    resize shrink height 1 px or 1 ppt
+  bindsym Right resize grow   width  1 px or 1 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+######## GAPS
+##### only work if i3-gaps is installed
+##### a windows selector should be there
+for_window [class="^.*"] border pixel 3
+
+##### Set inner/outer gaps
+#gaps inner 10
+#gaps outer 0
+
+### Smart gaps (gaps used if only more than one container on the workspace)
+#smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#smart_borders on
+
+#### start picom
+exec --no-startup-id picom -b
+
+
+#### compton
+#exec --no-startup-id xsettingsd &
+#exec --no-startup-id compton -b
+
+
+bindsym $mod+p move workspace to output right
+exec_always xrandr --output HDMI-1 --auto --right-of LVDS-1
+
+# colour of border, background, text, indicator, and child_border
+client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f
+
+
+# panel
+bar {
+        colors {
+        background #2f343f
+        statusline #2f343f
+        separator #4b5262
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspacei       #2f343f #ebcb8b #2f343f
+    }
+	 status_command i3status
+ 
+}
